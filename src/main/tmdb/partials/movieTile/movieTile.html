@@ -1,0 +1,7 @@
+<a href="#/movie/{{ movie.id }}"
+	title="{{ movie.title }}"
+	ng-if="movie.poster_path">
+    <img style="float: left; margin: 10px;"
+        src="{{view.images}}{{ movie.poster_path }}"
+        width="150" />
+</a>
