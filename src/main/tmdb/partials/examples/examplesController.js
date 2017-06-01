@@ -27,7 +27,9 @@ define( [ 'angular',
                 movies: [],
                 showText: true,
                 sort: true,
-                dato: {}
+                dato: {},
+                textSample: 'SomeTextSample',
+                numberSample: 1288323623006
             };
 
             var api = TMDBAPIService.Discover();

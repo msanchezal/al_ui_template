@@ -1,5 +1,23 @@
 <div class='container'>
-	<h1> ng repeat </h1>
+	<h1> Filters </h1>
+
+	<h2> lowercase </h2>
+	<div>{{ view.textSample | lowercase }}</div>
+
+	<h2> uppercase </h2>
+	<div>{{ view.textSample | uppercase }}</div>
+
+	<h2> date </h2>
+	<div>{{ view.numberSample | date:'yyyy-MM-dd HH:mm:ss Z'}}</div>
+	<div>{{ view.numberSample | date:'medium'}}</div>
+	<div>{{ view.numberSample | date:'yyyy'}}</div>
+
+	<h2> number </h2>
+	<div>{{ view.numberSample | number }}</div>
+
+	<h1> Angular directives </h1>
+
+	<h2> ng repeat </h2>
     <div class="row">
     	<div class="col-sm-1"> $index </div>
     	<div class="col-sm-4"> name </div>
@@ -24,7 +42,7 @@
 	    <div>Sort</div>
 	</button>
 
-    <h1> ng show / ng if </h1>
+    <h2> ng show / ng if </h2>
     <button type="button"
 	    class="btn btn-primary"
 	    ng-click="hide()">
@@ -34,17 +52,18 @@
 
 	<div ng-show="view.showText"> Some text to show or hide</div>
 
-	<h1> ng init </h1>
+	<h2> ng init </h2>
 	<button class="btn btn-secondary" ng-click="count = count + 1" ng-init="count = 0">
 		Init sample
 	</button>
 	<div>{{count}}</div>
 
-	<h1> ng bind </h1>
+	<h2> ng bind </h2>
 
 	<div>{{view.sort}}</div>
 	<div ng-bind="view.sort"></div>
 
 	<input ng-model="view.dato.name"/>
 	<br/>
+
 </div>

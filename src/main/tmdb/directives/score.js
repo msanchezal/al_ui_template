@@ -30,6 +30,20 @@ define( [ 'angular',
                     val: '=', //? is to specify that the value is optional
                     prefix: '@', //string
                     action: '&' //function
+                },
+                link: function(scope, elem, attrs) {
+
+                    //this is to manipulate the dom
+                    elem.bind('click', function() {
+                        elem.css('background-color', 'red');
+                        scope.$apply(function() {
+                          scope.color = "red";
+                        });
+                    });
+
+                    elem.bind('mouseover', function() {
+                        elem.css('cursor', 'pointer');
+                    });
                 }
             };
         };
