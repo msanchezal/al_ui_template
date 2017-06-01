@@ -1,19 +1,24 @@
 define( [ 'angular',
-          'ngRoute',
-          'config/config',
-          'tmdb/services/TMDBAPIService'],
-    function( angular, $routeParams, config, TMDBAPIService ) {
+          'config/config'],
+    function( angular, config ) {
         "use strict";
 
-        var MovieTileController = function($scope, TMDBAPIService, $routeParams ) {
+        var MovieTileController = function($scope ) {
 
-            $scope.view   = {
+            $scope.view = {
                 images: config.apiImg
             };
-            console.log('movie tile');
+
+            $scope.clickOne = function(){
+                console.log("en el click one");
+            };
+
+            $scope.clickTwo = function(){
+                console.log("en el click two");
+            };
         };
 
-        MovieTileController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+        MovieTileController.$inject = [ '$scope' ];
 
         return MovieTileController;
     }

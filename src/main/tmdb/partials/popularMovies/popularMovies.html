@@ -1,6 +1,6 @@
 <div>
     <h1 ng-if="movieList">Explore Popular Movies</h1>
     <div ng-repeat="movie in movieList">
-        <movie-tile ng-model="movie"/>
+        <movie-tile ng-model="movie" even="$even"/>
     </div>
 </div>

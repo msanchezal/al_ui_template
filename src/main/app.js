@@ -38,6 +38,7 @@ define([ 'angular',
          'tmdb/directives/movieCast',
          'tmdb/directives/movieCrew',
          'tmdb/directives/movieTile',
+         'tmdb/directives/score',
           ], 
     function( angular, config, $resource, $location, LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, PersonController, 
@@ -45,7 +46,8 @@ define([ 'angular',
               searchDirective, popularMoviesDirective,
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective,
-              movieTileDirective ) {
+              movieTileDirective,
+              scoreDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -53,12 +55,11 @@ define([ 'angular',
 
         /** @constructs app */
         var app = angular.module("app", angularModules );
-
+        //['ui.bootstrap']
         //  Configure $locationProvider and $routeProvider to allow top-level navigation within this route
     	app.config(['$locationProvider', function($locationProvider) {
-                            
+
             $locationProvider.html5Mode(false);
-            
     	}]);
 
         app.service( "TMDBAPIService", TMDBAPIService);
@@ -81,6 +82,7 @@ define([ 'angular',
         app.directive( "movieCast", movieCastDirective );
         app.directive( "movieCrew", movieCrewDirective );
         app.directive( "movieTile", movieTileDirective );
+        app.directive( "score", scoreDirective );
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
