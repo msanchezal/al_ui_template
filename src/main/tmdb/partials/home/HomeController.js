@@ -25,13 +25,24 @@ define( [ 'angular',
 
             $scope.view   = {
                 movies: [],
+                movieSelected: null,
+                movieSelectedId: null,
+                movieSelectedGenreIds: []
             };
 
             var api = TMDBAPIService.Discover();
             api.discover.movies().then(function ( response ) {
                 $scope.view.movies = response.data;
             });
-            
+
+            $scope.$on('movie-selected', function(event, movie ){
+                console.log("selected");
+                console.log(movie);
+                //$scope.view.movieSelected = { "details": movie };
+                $scope.view.movieSelected = movie;
+                $scope.view.movieSelectedId = movie.id;
+            });
+
         };
 
         HomeController.$inject = [ '$scope', 'TMDBAPIService' ];

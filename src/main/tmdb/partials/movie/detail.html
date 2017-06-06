@@ -1,8 +1,8 @@
 <div>
-    <div class="col-md-5">
-        <img src="{{view.images}}{{ detail.details.poster_path }}" />
+    <div class="col-md-12">
+        <img src="{{view.images}}{{ detail.details.poster_path }}" width="150"/>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-12">
         <h1>{{ detail.details.title }}</h1>
         <h3 ng-if="detail.details.tagline">{{ detail.details.tagline }}</h3>
         <br />
@@ -36,7 +36,7 @@
             <span ng-if="detail.details.homepage"><a href="{{ detail.details.homepage }}" target=_new>{{ detail.details.homepage }}</a></span>
         </div>
         <div class="col-md-12" ng-if="detail.details.similar.results.length != 0">
-            <similar-movies ng-model="detail.details.similar.results" />
+            <!--similar-movies ng-model="detail.details.similar.results" /-->
         </div>
     </div>
 </div>

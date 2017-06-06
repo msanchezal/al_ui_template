@@ -1,5 +1,5 @@
-<div class="col-md-3">
-	<a href="#/movie/{{ movie.id }}"
+<div class="col-md-3" ng-click="movieSelected()">
+	<div
 		title="{{ movie.title }}"
 		ng-if="movie.poster_path">
 		<div>
@@ -7,8 +7,8 @@
 	        src="{{view.images}}{{ movie.poster_path }}"
 	        width="150" />
 	    </div>
-	</a>
-	<div ng-click="sendMsg()">{{view.msg}}</div>
+	</div>
+	<div>{{view.msg}}</div>
 	<score prefix="score" val="movie.vote_average" action="clickOne()" ng-if="even"/>
 	<score prefix="SCORE" val="movie.vote_average" action="clickTwo()" ng-if="!even"/>
 </div>

@@ -1,0 +1,45 @@
+<div>
+    <div ng-if="view.loading" class="loader"></div>
+    <div ng-if="!view.loading">
+        <div class="col-md-12">
+            <img src="{{view.images}}{{ view.details.poster_path }}" width="150"/>
+        </div>
+        <div class="col-md-12">
+            <h1>{{ view.details.title }}</h1>
+            <h3 ng-if="detail.details.tagline">{{ view.details.tagline }}</h3>
+            <br />
+            <span ng-if="detail.details.overview">
+                {{ view.details.overview }}
+            </span>
+            <br />
+            <div class="sub-details row table-row" style="margin: 20px;">
+                <div class="col-md-6">
+                    <div class="detail">
+                        Release Date {{ view.details.release_date | date }}
+                    </div>
+                    <div class="detail">
+                        Running Time {{ view.details.runtime }} minutes
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail">
+                        Budget ${{ view.details.budget | number }} USD
+                    </div>
+                    <div class="detail">
+                        Revenue ${{ view.details.revenue | number }} USD
+                    </div>
+                </div>
+            </div>
+            <div>
+                <span ng-repeat="genre in view.details.genres">
+                    <strong style="border: 1pcx solid #dddddd; margin: 5px; padding: 2px; background-color: #eeeeee;"> {{ genre.name }} </strong>
+                </span>
+                <br />
+                <span ng-if="view.details.homepage"><a href="{{ view.details.homepage }}" target=_new>{{ view.details.homepage }}</a></span>
+            </div>
+            <div class="col-md-12" ng-if="view.details.similar.results.length != 0">
+                <similar-movies ng-model="view.details.similar.results" />
+            </div>
+        </div>
+    </div>
+</div>

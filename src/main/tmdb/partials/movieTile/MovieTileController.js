@@ -22,6 +22,10 @@ define( [ 'angular',
                 $scope.$broadcast('movie-tile-click',$scope.movie);
             };
 
+            $scope.movieSelected = function(){
+                $scope.$emit('movie-selected', $scope.movie);
+            };
+
             $scope.$on('score-clicked', function(event, msg){
                 $scope.view.msg=msg;
                 console.log("en el tile: "+msg);

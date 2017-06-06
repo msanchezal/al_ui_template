@@ -11,7 +11,7 @@ define( [ 'angular',
 
             var internal = {
                 assignColor: function( val ) {
-                    console.log(val);
+                    //console.log(val);
                     if( val >= 7 ){
                         $scope.view.color = 'green';
                     }
@@ -28,8 +28,8 @@ define( [ 'angular',
 
             $scope.$on('movie-tile-click', function(event, msg){
                 $scope.view.color = 'yellow';
-                console.log(event);
-                console.log(msg);
+            //   console.log(event);
+            //   console.log(msg);
             });
 
             internal.assignColor($scope.val);

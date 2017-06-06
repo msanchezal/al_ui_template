@@ -1,1 +1,15 @@
-<popular-movies ng-model="view.movies.results" />
+<div>
+    <h1 ng-if="view.movies.results">Explore  Movies</h1>
+    <div class="row">
+    	<div class="col-md-6">
+		    <div ng-repeat="movie in view.movies.results">
+		        <movie-tile ng-model="movie" even="$even"/>
+		    </div>
+	    </div>
+	    <div class="col-md-6">
+	    	<movie-detail
+	    		ng-if="view.movieSelectedId"
+	    		movie-id="view.movieSelectedId" />
+		</div>
+	</div>
+</div>
