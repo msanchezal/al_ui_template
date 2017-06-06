@@ -3,7 +3,7 @@ define( [ 'angular',
     function( angular, config ) {
         "use strict";
 
-        var ScoreController = function( $scope ) {
+        var ScoreController = function( $scope, $rootScope ) {
 
             $scope.view = {
                 color: 'gray'
@@ -22,16 +22,20 @@ define( [ 'angular',
             };
 
             $scope.click = function() {
-                if ($scope.action && typeof($scope.action) === "function") {
-                    $scope.action();
-                }
-                console.log('action');
+                //$scope.$emit('score-clicked', $scope.view.color );
+                $rootScope.$broadcast('score-clicked', $scope.view.color);
             };
+
+            $scope.$on('movie-tile-click', function(event, msg){
+                $scope.view.color = 'yellow';
+                console.log(event);
+                console.log(msg);
+            });
 
             internal.assignColor($scope.val);
         };
 
-        ScoreController.$inject = [ '$scope' ];
+        ScoreController.$inject = [ '$scope', '$rootScope' ];
 
         return ScoreController;
     }

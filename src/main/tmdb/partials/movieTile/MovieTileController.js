@@ -6,7 +6,8 @@ define( [ 'angular',
         var MovieTileController = function($scope ) {
 
             $scope.view = {
-                images: config.apiImg
+                images: config.apiImg,
+                msg:''
             };
 
             $scope.clickOne = function(){
@@ -16,6 +17,15 @@ define( [ 'angular',
             $scope.clickTwo = function(){
                 console.log("en el click two");
             };
+
+            $scope.sendMsg = function(){
+                $scope.$broadcast('movie-tile-click',$scope.movie);
+            };
+
+            $scope.$on('score-clicked', function(event, msg){
+                $scope.view.msg=msg;
+                console.log("en el tile: "+msg);
+            });
         };
 
         MovieTileController.$inject = [ '$scope' ];

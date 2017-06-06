@@ -8,6 +8,7 @@
 	        width="150" />
 	    </div>
 	</a>
+	<div ng-click="sendMsg()">{{view.msg}}</div>
 	<score prefix="score" val="movie.vote_average" action="clickOne()" ng-if="even"/>
 	<score prefix="SCORE" val="movie.vote_average" action="clickTwo()" ng-if="!even"/>
 </div>
