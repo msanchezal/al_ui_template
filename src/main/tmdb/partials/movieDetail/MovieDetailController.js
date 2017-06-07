@@ -20,8 +20,9 @@ define( [ 'angular',
     function( angular, config, TMDBAPIService ) {
         "use strict";
 
-        var MovieDetail = function( $scope, $timeout, TMDBAPIService ) {
+        var MovieDetailController = function( $scope, $timeout, TMDBAPIService ) {
 
+            var self = this; //this is in other to be able to test
             var config  = angular.module("config");
             $scope.view = {
                 images : config.apiImg,
@@ -29,30 +30,33 @@ define( [ 'angular',
                 loading: false
             };
 
-            var loadMovieData = function( id ){
-                $scope.view.loading = true;
-                var api = TMDBAPIService.Movie();
-                api.movie.movie(id).then( function ( response ) {
-                    $scope.view.details = response.data;
-                });
+            var internal = self.internal = {
+                loadMovieData : function( id ){
+                    $scope.view.loading = true;
+                    var api = TMDBAPIService.Movie();
+                    api.movie.movie(id).then( function ( response ) {
+                        $scope.view.details = response.data;
+                    });
 
-                $timeout(function(){
-                    $scope.view.loading = false;
-                    console.log("after some seconds");
-                }, 5000);
+                    $timeout(function(){
+                        $scope.view.loading = false;
+                        console.log("after some seconds");
+                    }, 5000);
+                },
+                reload: function(){
+                }
             };
 
             $scope.$watch('movieId',function( newValue, oldValue){
-                console.log("en el watch : ", newValue, oldValue);
-                if(newValue){
-                    loadMovieData(newValue);
+                if( newValue ){
+                    internal.loadMovieData(newValue);
                 }
             });
 
         };
 
-        MovieDetail.$inject = [ '$scope', '$timeout', 'TMDBAPIService' ];
+        MovieDetailController.$inject = [ '$scope', '$timeout', 'TMDBAPIService' ];
 
-        return MovieDetail;
+        return MovieDetailController;
     }
 );
